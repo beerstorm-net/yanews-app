@@ -105,61 +105,63 @@ class _HomePageState extends State<HomePage> {
         elevation: 4.0,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(4.0))),
         margin: EdgeInsets.all(4.0),
-        child: Column(
-          children: [
-            ListTile(
-              contentPadding: EdgeInsets.all(16.0),
-              onTap: () => CommonUtils.launchURL(item.url),
-              isThreeLine: true,
-              leading: _networkImage(item.urlToImage),
-              title: Container(
-                alignment: Alignment.center,
-                child: Expanded(
-                  child: Text(
-                    "${item.title}",
+        child: Container(
+            height: screenSizeConfig.safeBlockVertical * 33,
+            child: Column(
+              children: [
+                ListTile(
+                  contentPadding: EdgeInsets.all(16.0),
+                  onTap: () => CommonUtils.launchURL(item.url),
+                  isThreeLine: true,
+                  leading: _networkImage(item.urlToImage),
+                  title: Container(
+                    alignment: Alignment.center,
+                    child: Expanded(
+                      child: Text(
+                        "${item.title}",
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ),
+                  subtitle: Text(
+                    "${item.description}",
+                    maxLines: 2,
+                    softWrap: true,
+                    overflow: TextOverflow.clip,
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
-              ),
-              subtitle: Text(
-                "${item.description}",
-                maxLines: 2,
-                softWrap: true,
-                overflow: TextOverflow.clip,
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-            Container(
-              padding: EdgeInsets.only(bottom: 8),
-              alignment: Alignment.topCenter,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Text("${CommonUtils.humanizeDateText(item.publishedAt)}",
-                      style: TextStyle(fontSize: 18, fontStyle: FontStyle.italic)),
-                  Text(
-                    "${item.author}",
-                    maxLines: 2,
-                    softWrap: true,
-                    overflow: TextOverflow.clip,
+                Container(
+                  padding: EdgeInsets.only(bottom: 8),
+                  alignment: Alignment.topCenter,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Text("${CommonUtils.humanizeDateText(item.publishedAt)}",
+                          style: TextStyle(fontSize: 18, fontStyle: FontStyle.italic)),
+                      Text(
+                        "${item.author}",
+                        maxLines: 2,
+                        softWrap: true,
+                        overflow: TextOverflow.clip,
+                      ),
+                      Text(
+                        "${item.source?.name}",
+                        maxLines: 2,
+                        softWrap: true,
+                        overflow: TextOverflow.clip,
+                      ),
+                    ],
                   ),
-                  Text(
-                    "${item.source?.name}",
-                    maxLines: 2,
-                    softWrap: true,
-                    overflow: TextOverflow.clip,
-                  ),
-                ],
-              ),
-            )
-          ],
-        ));
+                )
+              ],
+            )));
   }
 
   _networkImage(String imageUrl) => CachedNetworkImage(
