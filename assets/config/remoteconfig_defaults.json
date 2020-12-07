@@ -1,0 +1,7 @@
+{
+  "newsapi_key": "FIXME_add-to-Firebase-RemoteConfig",
+  "newsapi_url": "https://newsapi.org",
+  "newsapi_headlines": "/v2/top-headlines",
+  "newsapi_all": "/v2/everything",
+  "newsapi_sources": "/v2/sources"
+}
