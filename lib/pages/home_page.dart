@@ -106,23 +106,24 @@ class _HomePageState extends State<HomePage> {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(4.0))),
         margin: EdgeInsets.all(4.0),
         child: Container(
-            height: screenSizeConfig.safeBlockVertical * 33,
+            height: screenSizeConfig.safeBlockVertical * 24,
             child: Column(
               children: [
                 ListTile(
-                  contentPadding: EdgeInsets.all(16.0),
+                  contentPadding: EdgeInsets.all(8.0),
                   onTap: () => CommonUtils.launchURL(item.url),
-                  isThreeLine: true,
+                  //isThreeLine: true,
                   leading: _networkImage(item.urlToImage),
                   title: Container(
                     alignment: Alignment.center,
-                    child: Expanded(
-                      child: Text(
-                        "${item.title}",
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                        ),
+                    child: Text(
+                      "${item.title}",
+                      maxLines: 2,
+                      softWrap: true,
+                      overflow: TextOverflow.clip,
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
@@ -132,30 +133,32 @@ class _HomePageState extends State<HomePage> {
                     softWrap: true,
                     overflow: TextOverflow.clip,
                     style: TextStyle(
-                      fontSize: 18,
+                      fontSize: 16,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
                 Container(
-                  padding: EdgeInsets.only(bottom: 8),
-                  alignment: Alignment.topCenter,
+                  //padding: EdgeInsets.only(bottom: 2),
+                  //alignment: Alignment.topCenter,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       Text("${CommonUtils.humanizeDateText(item.publishedAt)}",
-                          style: TextStyle(fontSize: 18, fontStyle: FontStyle.italic)),
+                          style: TextStyle(fontSize: 14, fontStyle: FontStyle.italic)),
                       Text(
                         "${item.author}",
                         maxLines: 2,
                         softWrap: true,
                         overflow: TextOverflow.clip,
+                        style: TextStyle(fontSize: 12),
                       ),
                       Text(
                         "${item.source?.name}",
                         maxLines: 2,
                         softWrap: true,
                         overflow: TextOverflow.clip,
+                        style: TextStyle(fontSize: 12),
                       ),
                     ],
                   ),
